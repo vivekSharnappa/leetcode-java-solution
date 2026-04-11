@@ -1,0 +1,21 @@
+class Solution {
+    public boolean isPalindrome(int x) {
+
+        // Negative or ending with 0 (but not 0 itself)
+        if (x < 0 || (x % 10 == 0 && x != 0)) {
+            return false;
+        }
+
+        int reversedHalf = 0;
+
+        // Reverse only half of the number
+        while (x > reversedHalf) {
+            int digit = x % 10;
+            reversedHalf = reversedHalf * 10 + digit;
+            x = x / 10;
+        }
+
+        // Check for even & odd length numbers
+        return (x == reversedHalf) || (x == reversedHalf / 10);
+    }
+}
